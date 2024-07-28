@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914340ef-67ba-4c60-8c3a-9a60e9e93c3f" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../croproject/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../croproject/.idea/croproject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../croproject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../croproject/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../croproject/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../croproject/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../croproject/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../croproject/crawling/skysc.py" beforeDir="false" afterPath="$PROJECT_DIR$/../croproject/crawling/skysc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../인공지능.md" beforeDir="false" afterPath="$PROJECT_DIR$/../인공지능.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/24__7__28__오후_9_31,_체크아웃_전에_커밋되지_않은_변경_내용_[변경]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/24__7__28__오후_9_31,_체크아웃_전에_커밋되지_않은_변경_내용_[변경]1/shelved.patch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1234.py" beforeDir="false" afterPath="$PROJECT_DIR$/1234.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +22,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="aa" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "blissyou"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/blissyou/12345",
+    "accountId": "058bb129-89f3-4258-b0ef-aa4605b22af7"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -37,18 +50,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "aa 병합 중",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -67,6 +81,7 @@
       <updated>1722165744676</updated>
       <workItem from="1722165746846" duration="2903000" />
       <workItem from="1722169150940" duration="268000" />
+      <workItem from="1722169425784" duration="1199000" />
     </task>
     <servers />
   </component>
