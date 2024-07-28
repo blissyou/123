@@ -1,0 +1,16 @@
+Index: 1234.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>123\n123\n123\n123\n123\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1234.py b/1234.py
+--- a/1234.py	(revision 99f4d493748081480771f1e2550e774b116430eb)
++++ b/1234.py	(date 1722169889066)
+@@ -1,5 +1,0 @@
+-123
+-123
+-123
+-123
+-123

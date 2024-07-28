@@ -1,0 +1,20 @@
+Index: 1234.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import numpy\nimport numpy as np\n\nnumpy.e\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1234.py b/1234.py
+--- a/1234.py	(revision f04bf6f8e72dc3f092d1989df20209386026e33d)
++++ b/1234.py	(date 1722169905836)
+@@ -1,4 +1,5 @@
+-import numpy
+-import numpy as np
+-
+-numpy.e
++123
++123
++123
++123
++123
