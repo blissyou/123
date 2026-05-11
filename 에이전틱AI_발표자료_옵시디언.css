@@ -1,0 +1,34 @@
+.agentic-ai-talk {
+  --h1-color: #16324f;
+  --h2-color: #ef7a73;
+  --text-normal: #24384d;
+  --text-muted: #60758a;
+  --background-primary: #f8fafb;
+}
+
+.agentic-ai-talk h1 {
+  font-size: 2.2em;
+  font-weight: 800;
+  color: #16324f;
+  margin-bottom: 0.35em;
+}
+
+.agentic-ai-talk h2,
+.agentic-ai-talk h3 {
+  color: #ef7a73;
+}
+
+.agentic-ai-talk blockquote {
+  border-left: 4px solid #60d4c8;
+  background: rgba(96, 212, 200, 0.08);
+  padding: 0.8em 1em;
+  border-radius: 10px;
+}
+
+.agentic-ai-talk table {
+  font-size: 0.92em;
+}
+
+.agentic-ai-talk hr {
+  margin: 2.2em 0;
+}

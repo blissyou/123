@@ -1,0 +1,35 @@
+﻿{
+    "pptx":  "C:\\Users\\COMPUTER1\\Desktop\\projects\\기술 포트폴리오\\tmp\\presentations\\agentic-ai-portfolio\\output\\output.pptx",
+    "slide_count":  6,
+    "media_count":  0,
+    "placeholder_hits":  [
+
+                         ],
+    "preview_files":  [
+                          {
+                              "Name":  "slide-01.png",
+                              "Length":  84565
+                          },
+                          {
+                              "Name":  "slide-02.png",
+                              "Length":  108765
+                          },
+                          {
+                              "Name":  "slide-03.png",
+                              "Length":  118337
+                          },
+                          {
+                              "Name":  "slide-04.png",
+                              "Length":  141839
+                          },
+                          {
+                              "Name":  "slide-05.png",
+                              "Length":  125731
+                          },
+                          {
+                              "Name":  "slide-06.png",
+                              "Length":  100859
+                          }
+                      ],
+    "status":  "pass"
+}
