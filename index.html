@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>에이전틱 AI 기반 업무 자동화 기술 발표자료</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #fffdf8;
+      --panel: #ffffff;
+      --ink: #17304d;
+      --muted: #61778d;
+      --line: #d7e0e8;
+      --navy: #1c3c5d;
+      --navy-2: #234a72;
+      --coral: #ef7a73;
+      --teal: #67d1c5;
+      --mint: #dff4ee;
+      --sand: #fbf0db;
+      --sky: #e4eef8;
+      --rose: #fae5e3;
+      --gold: #f4d374;
+      --shadow: 0 22px 60px rgba(23, 48, 77, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(103, 209, 197, 0.10), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(244, 211, 116, 0.11), transparent 28%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    .deck {
+      width: min(1320px, calc(100vw - 32px));
+      margin: 20px auto 48px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      background: rgba(244, 247, 251, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(215, 224, 232, 0.9);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(23, 48, 77, 0.04);
+    }
+
+    .toolbar-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .toolbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .toolbar a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .slide {
+      position: relative;
+      min-height: 100vh;
+      padding: 56px 60px;
+      margin-bottom: 26px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .slide-number {
+      position: absolute;
+      right: 28px;
+      bottom: 22px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--coral);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.12;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 84px);
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 56px);
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 28px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .cover {
+      background:
+        linear-gradient(90deg, var(--paper) 0 59%, var(--navy) 59% 100%);
+      color: var(--ink);
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      min-height: calc(100vh - 112px);
+      align-items: stretch;
+    }
+
+    .cover-left,
+    .cover-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cover-left p {
+      max-width: 540px;
+      margin-top: 26px;
+      font-size: 26px;
+    }
+
+    .cover-right {
+      color: white;
+      padding-left: 24px;
+    }
+
+    .cover-right .eyebrow {
+      color: #b2cfdf;
+    }
+
+    .question {
+      margin-top: 18px;
+      font-size: clamp(38px, 4.4vw, 66px);
+      line-height: 1.14;
+      font-weight: 800;
+      color: white;
+    }
+
+    .cover-note {
+      margin-top: 26px;
+      max-width: 470px;
+      color: #d8e4ee;
+      font-size: 24px;
+    }
+
+    .cover-list {
+      margin-top: 62px;
+      display: grid;
+      gap: 12px;
+      max-width: 420px;
+      font-size: 22px;
+      color: white;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.96;
+    }
+
+    .shape.teal {
+      top: 72px;
+      right: 90px;
+      width: 250px;
+      height: 250px;
+      background: var(--teal);
+    }
+
+    .shape.coral {
+      bottom: 152px;
+      left: -10px;
+      width: 118px;
+      height: 118px;
+      background: var(--coral);
+    }
+
+    .shape.gold {
+      right: 60px;
+      bottom: 56px;
+      width: 180px;
+      height: 180px;
+      background: conic-gradient(from 0deg, var(--gold) 0 75%, transparent 75% 100%);
+    }
+
+    .content-head {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .content-head p {
+      max-width: 1100px;
+    }
+
+    .card-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px;
+      min-height: 240px;
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+    }
+
+    .card ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.55;
+    }
+
+    .card li + li {
+      margin-top: 8px;
+    }
+
+    .tinted-mint { background: var(--mint); border-color: transparent; }
+    .tinted-sand { background: var(--sand); border-color: transparent; }
+    .tinted-sky { background: var(--sky); border-color: transparent; }
+    .tinted-rose { background: var(--rose); border-color: transparent; }
+    .tinted-navy { background: var(--navy); color: white; border-color: var(--navy); }
+    .tinted-navy p, .tinted-navy li { color: #d6e2ec; }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 34px;
+    }
+
+    .process-step {
+      border-radius: 28px;
+      padding: 26px 22px;
+      min-height: 218px;
+      border: 1px solid var(--line);
+    }
+
+    .process-step strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 28px;
+      color: var(--ink);
+    }
+
+    .process-step p {
+      font-size: 22px;
+    }
+
+    .table-wrap {
+      margin-top: 30px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th, td {
+      padding: 22px 20px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--navy);
+      color: white;
+      font-size: 24px;
+    }
+
+    td {
+      font-size: 22px;
+      color: var(--muted);
+      background: white;
+    }
+
+    td:first-child {
+      width: 18%;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    td:nth-child(2) {
+      width: 18%;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 30px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .quote {
+      margin-top: 26px;
+      padding: 24px 26px;
+      border-radius: 24px;
+      background: #fff7f6;
+      border-left: 6px solid var(--coral);
+      font-size: 28px;
+      font-weight: 700;
+      color: #42576d;
+      line-height: 1.4;
+    }
+
+    .metric {
+      font-size: 66px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .metric-label {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--coral);
+      margin-bottom: 10px;
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .swot-card {
+      min-height: 280px;
+      padding: 28px 24px;
+      border-radius: 28px;
+    }
+
+    .swot-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .swot-letter {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 26px;
+      margin-top: 24px;
+    }
+
+    .summary-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px 24px;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: var(--coral);
+    }
+
+    .summary-card span {
+      display: block;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .summary-card p {
+      margin-top: 8px;
+      font-size: 21px;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1100px) {
+      .cover-grid,
+      .summary-grid,
+      .card-grid-4,
+      .card-grid-3,
+      .card-grid-2,
+      .process,
+      .swot-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .slide {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .deck {
+        width: min(100vw - 16px, 1320px);
+        margin-top: 10px;
+      }
+
+      .toolbar {
+        padding: 14px;
+      }
+
+      .slide {
+        padding: 28px 22px 54px;
+        border-radius: 24px;
+      }
+
+      .cover {
+        background: linear-gradient(180deg, var(--paper) 0 46%, var(--navy) 46% 100%);
+      }
+
+      .cover-grid,
+      .summary-grid,
+      .card-grid-4,
+      .card-grid-3,
+      .card-grid-2,
+      .process,
+      .swot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      table,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      th {
+        border-bottom: 1px solid var(--line);
+      }
+
+      td:nth-child(2) {
+        width: 100%;
+      }
+
+      .shape.teal,
+      .shape.coral,
+      .shape.gold {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <div class="toolbar">
+      <div class="toolbar-title">에이전틱 AI 기반 업무 자동화 기술 발표자료</div>
+      <nav>
+        <a href="#slide-1">표지</a>
+        <a href="#slide-2">기술 개요</a>
+        <a href="#slide-3">3축 분석</a>
+        <a href="#slide-4">산업 동향</a>
+        <a href="#slide-5">사업화</a>
+        <a href="#slide-6">SWOT</a>
+        <a href="#slide-7">결론</a>
+      </nav>
+    </div>
+
+    <section class="slide cover" id="slide-1">
+      <div class="cover-grid">
+        <div class="cover-left">
+          <p class="eyebrow">Technology Portfolio</p>
+          <h1>에이전틱 AI 기반<br>업무 자동화 기술</h1>
+          <p>자비스형 개인 비서 시스템을 중심으로 본 개발연구·서비스혁신·중기연구 분석</p>
+        </div>
+        <div class="cover-right">
+          <div class="shape teal"></div>
+          <div class="shape coral"></div>
+          <div class="shape gold"></div>
+          <p class="eyebrow">핵심 질문</p>
+          <div class="question">AI는 이제 답변을 넘어서 스스로 계획하고 실행하는가?</div>
+          <div class="cover-note">일정 관리, 문서 작성, 정보 검색, 후속 조치까지 하나의 흐름으로 연결하는 지능형 자동화가 핵심입니다.</div>
+          <div class="cover-list">
+            <div>1. 기술 개념과 중요성</div>
+            <div>2. 기술 포트폴리오 3축 분석</div>
+            <div>3. 산업 동향과 사업화 가능성</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-number">01</div>
+    </section>
+
+    <section class="slide" id="slide-2">
+      <div class="content-head">
+        <p class="eyebrow">Overview</p>
+        <h2>기술 개요</h2>
+        <p>에이전틱 AI는 사용자의 목표를 이해하고, 작업 절차를 스스로 계획하며, 여러 디지털 도구를 활용해 실제 업무를 수행하는 지능형 AI 기술입니다.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-step tinted-mint">
+          <strong>사용자 목표</strong>
+          <p>회의록 정리, 일정 관리, 자료 조사처럼 사람이 원하는 결과를 입력받습니다.</p>
+        </div>
+        <div class="process-step tinted-sand">
+          <strong>계획 수립</strong>
+          <p>무엇을 먼저 하고 어떤 순서로 처리할지 스스로 단계별 흐름을 만듭니다.</p>
+        </div>
+        <div class="process-step tinted-sky">
+          <strong>도구 실행</strong>
+          <p>문서 작성, 검색, API 호출, 데이터 정리 등 필요한 도구를 연결합니다.</p>
+        </div>
+        <div class="process-step tinted-rose">
+          <strong>결과 보고</strong>
+          <p>최종 결과를 전달하고, 후속 작업이나 다음 행동까지 제안할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="card-grid-2">
+        <div class="card">
+          <h3>일반 챗봇과의 차이</h3>
+          <ul>
+            <li>일반 챗봇은 질문에 답변하고 끝나는 경우가 많습니다.</li>
+            <li>에이전틱 AI는 목표를 달성하기 위해 여러 단계를 연속적으로 수행합니다.</li>
+            <li>즉, 답변형 AI에서 실행형 AI로 확장된 형태입니다.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>자비스 프로젝트와의 연결</h3>
+          <ul>
+            <li>일정 관리</li>
+            <li>문서 초안 작성</li>
+            <li>정보 검색 및 정리</li>
+            <li>후속 작업 제안</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-number">02</div>
+    </section>
+
+    <section class="slide" id="slide-3">
+      <div class="content-head">
+        <p class="eyebrow">Portfolio Axes</p>
+        <h2>기술 포트폴리오 3축 분석</h2>
+        <p>이 기술은 기존 AI와 자동화 기술을 결합해 실사용 시스템으로 구현하는 프로젝트이므로, 연구 성격과 혁신 유형, 연구 기간 측면에서 아래와 같이 배치할 수 있습니다.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>선택 항목</th>
+              <th>선정 이유</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>연구의 성격</td>
+              <td>개발연구</td>
+              <td>기존 LLM, API, 자동화 기술을 결합해 실제로 동작하는 시스템을 구현하는 성격이 가장 강합니다.</td>
+            </tr>
+            <tr>
+              <td>혁신의 유형</td>
+              <td>서비스혁신</td>
+              <td>물리적 제품보다 사용자의 업무 방식과 서비스 제공 구조를 바꾸며 생산성을 높이는 디지털 혁신에 해당합니다.</td>
+            </tr>
+            <tr>
+              <td>연구 기간</td>
+              <td>중기연구</td>
+              <td>프로토타입 이후에도 정확도, 보안, 권한 통제, 사용자 경험을 계속 고도화해야 하므로 중기 관점이 적절합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="card">
+          <h3>교수님 포인트</h3>
+          <p>기초연구가 아니라는 점을 분명히 하고, 실제 구현과 서비스 적용성에 초점을 맞추면 논리가 더 선명해집니다.</p>
+        </div>
+        <div class="card">
+          <h3>발표 연결 문장</h3>
+          <p>즉, 이 기술은 새로운 과학 원리의 발견보다 기존 기술을 실제 업무 흐름에 맞게 구현하는 개발연구 성격이 강합니다.</p>
+        </div>
+        <div class="card">
+          <h3>프로젝트 연결</h3>
+          <p>자비스 프로젝트는 단순 챗봇이 아니라 업무를 실행하는 시스템이므로 서비스혁신과 중기 고도화 관점이 자연스럽습니다.</p>
+        </div>
+      </div>
+      <div class="slide-number">03</div>
+    </section>
+
+    <section class="slide" id="slide-4">
+      <div class="content-head">
+        <p class="eyebrow">Industry Trends</p>
+        <h2>산업 동향과 기술 발전 단계</h2>
+        <p>에이전틱 AI는 아직 초기 상용화 단계이지만, 글로벌 빅테크와 기업용 소프트웨어 기업들이 빠르게 제품화하고 있습니다.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="card tinted-navy">
+          <div class="metric-label">시장 지표</div>
+          <div class="metric">40%</div>
+          <p>Gartner는 2026년 말까지 기업용 애플리케이션의 40%가 작업 특화 AI 에이전트를 포함할 것으로 전망했습니다.</p>
+        </div>
+        <div class="card tinted-mint">
+          <div class="metric-label">현재 수준</div>
+          <div class="metric">초기 상용화</div>
+          <p>기술적으로는 프로토타입을 넘어 제품화가 진행 중이지만, 완전 자율형 시스템은 아직 제한적입니다.</p>
+        </div>
+        <div class="card tinted-sand">
+          <div class="metric-label">주요 기업</div>
+          <div class="metric" style="font-size:42px;">Microsoft · Salesforce · Google · OpenAI · IBM</div>
+          <p>Copilot Studio, Agentforce 등 실제 업무 에이전트 플랫폼이 등장하고 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="card-grid-2">
+        <div class="card">
+          <h3>향후 발전 가능성</h3>
+          <ul>
+            <li>단일 에이전트에서 멀티에이전트 협업 구조로 확장</li>
+            <li>개인 비서형 AI에서 기업 전사 업무 플랫폼으로 진화</li>
+            <li>음성 인터페이스와 결합한 자비스형 UX로 발전 가능</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>예상 한계</h3>
+          <ul>
+            <li>환각과 오류 가능성</li>
+            <li>권한 오남용 위험</li>
+            <li>개인정보 및 기업기밀 문제</li>
+            <li>ROI가 불확실한 경우 도입 실패 가능성</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-note">최신 산업 동향은 Gartner, Microsoft, Salesforce 등에서 제시한 agentic AI 관련 발표와 전망을 반영했습니다.</div>
+      <div class="slide-number">04</div>
+    </section>
+
+    <section class="slide" id="slide-5">
+      <div class="content-head">
+        <p class="eyebrow">Commercialization</p>
+        <h2>사업화 가능성</h2>
+        <p>이 기술은 반복 사무업무 자동화, 생산성 향상, 기업 내 AI 전환과 직접 연결되기 때문에 기술성과 사업성을 동시에 설명하기 좋습니다.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="card">
+          <h3>시장성</h3>
+          <ul>
+            <li>기업용 AI 소프트웨어의 핵심 성장 축</li>
+            <li>문서작성, 고객응대, 일정관리, 리서치, 내부 협업으로 확장 가능</li>
+            <li>산업별 적용 범위가 매우 넓음</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>수익 모델</h3>
+          <ul>
+            <li>SaaS 구독형</li>
+            <li>기업 맞춤형 구축</li>
+            <li>API 사용량 기반 과금</li>
+            <li>산업별 특화 솔루션 판매</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>경쟁 기술</h3>
+          <ul>
+            <li>기존 RPA</li>
+            <li>일반 생성형 AI 챗봇</li>
+            <li>협업툴 내장형 AI 비서</li>
+            <li>차별점: 답변이 아니라 실행까지 연결</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote">
+        이 기술의 핵심 가치는 “업무를 대신 해주는 AI”라는 점에 있습니다. 따라서 기술의 성패는 모델 성능 자체보다도 실제 업무 성과를 얼마나 안정적으로 만들어내는지에 달려 있습니다.
+      </div>
+      <div class="slide-number">05</div>
+    </section>
+
+    <section class="slide" id="slide-6">
+      <div class="content-head">
+        <p class="eyebrow">SWOT Analysis</p>
+        <h2>SWOT 분석</h2>
+        <p>SWOT는 내부 강점과 약점, 외부 기회와 위협을 종합적으로 분석해 기술의 성장 가능성과 위험요인을 함께 평가하는 전략 분석 도구입니다.</p>
+      </div>
+
+      <div class="swot-grid">
+        <div class="swot-card tinted-mint">
+          <div class="swot-title"><span class="swot-letter">S</span>Strength</div>
+          <p>생산성 향상 효과가 직관적이고, 다양한 산업과 업무에 적용할 수 있다는 점이 가장 큰 강점입니다.</p>
+        </div>
+        <div class="swot-card tinted-sand">
+          <div class="swot-title"><span class="swot-letter">W</span>Weakness</div>
+          <p>오류와 신뢰성 문제, 보안 및 개인정보 이슈는 실제 현장 도입에서 해결해야 할 핵심 약점입니다.</p>
+        </div>
+        <div class="swot-card tinted-sky">
+          <div class="swot-title"><span class="swot-letter">O</span>Opportunity</div>
+          <p>기업의 AI 전환 가속, 개인 비서형 AI 수요 증가, 산업별 특화 시장 확대는 매우 큰 외부 기회입니다.</p>
+        </div>
+        <div class="swot-card tinted-rose">
+          <div class="swot-title"><span class="swot-letter">T</span>Threat</div>
+          <p>빅테크 경쟁 심화, 규제 강화 가능성, ROI 불확실 시 시장 조정 가능성은 중요한 외부 위협입니다.</p>
+        </div>
+      </div>
+
+      <div class="quote">
+        따라서 에이전틱 AI 기반 업무 자동화 기술은 성장 가능성은 높지만, 신뢰성과 보안 문제를 해결해야 지속 가능한 사업화가 가능하다고 해석할 수 있습니다.
+      </div>
+      <div class="slide-number">06</div>
+    </section>
+
+    <section class="slide" id="slide-7">
+      <div class="content-head">
+        <p class="eyebrow">Final Evaluation</p>
+        <h2>최종 평가</h2>
+        <p>에이전틱 AI는 생성형 AI를 실질적 실행 시스템으로 확장한 기술이며, 자비스형 개인 비서 시스템과 직접 연결된다는 점에서 발표 주제로 매우 적합합니다.</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="card tinted-navy">
+          <h3 style="margin-bottom:18px;">발표 결론</h3>
+          <div class="question" style="font-size:44px; margin-top:0;">에이전틱 AI는 ‘대답하는 AI’에서 ‘행동하는 AI’로 넘어가는 전환점입니다.</div>
+          <div class="cover-note" style="margin-top:22px;">즉, 이 기술은 단순한 유행 키워드가 아니라, 실제 업무를 자동화하고 서비스 구조를 바꾸는 실행형 AI로 이해할 수 있습니다.</div>
+        </div>
+
+        <div class="summary-stack">
+          <div class="summary-card">
+            <strong>성장 가능성</strong>
+            <span>매우 높음</span>
+            <p>업무 자동화와 기업용 AI 시장의 핵심 축으로 성장 중입니다.</p>
+          </div>
+          <div class="summary-card">
+            <strong>투자 가치</strong>
+            <span>높지만 선별적 접근 필요</span>
+            <p>화제성보다 실제 성과를 입증하는 적용 분야가 중요합니다.</p>
+          </div>
+          <div class="summary-card">
+            <strong>개인적 선정 이유</strong>
+            <span>자비스 프로젝트와 직접 연결</span>
+            <p>내 프로젝트 경험과 산업 트렌드를 함께 설명할 수 있어 발표 설득력이 높습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        한 줄 결론: 에이전틱 AI 기반 업무 자동화 기술은 기술 포트폴리오상 개발연구, 서비스혁신, 중기연구에 해당하며 향후 높은 성장 가능성을 가진다.
+      </div>
+      <div class="slide-number">07</div>
+    </section>
+  </main>
+</body>
+</html>
